@@ -15,8 +15,6 @@ return new class extends Migration
     {
         Schema::create('fisherman_catch', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('fisherman_tim_id')->after('id')->required();
-            $table->foreign('fisherman_tim_id')->references('id')->on('fisherman_tim')->onDelete('restrict');
             $table->integer('weight');
             $table->timestamps();
         });

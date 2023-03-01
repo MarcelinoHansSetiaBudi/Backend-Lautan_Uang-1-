@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('assets_detail', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->integer('quantity');
-            $table->dateTime('purchase_date');
-            $table->timestamps();
+        Schema::table('postal_code', function (Blueprint $table) {
+            $table->unsignedBigInteger('location_id')->after('name')->required();
+            $table->foreign('location_id')->references('id')->on('location');
         });
     }
 
@@ -29,6 +26,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('assets_detail');
+        Schema::table('postal_code', function (Blueprint $table) {
+            $table->dropForeign(['location_id']);
+            $table->dropColumn('location_id');
+        });
     }
 };

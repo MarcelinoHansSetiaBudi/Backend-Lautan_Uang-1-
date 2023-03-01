@@ -15,10 +15,6 @@ return new class extends Migration
     {
         Schema::create('funding_transaction', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('fisherman_tim_id')->after('id')->required();
-            $table->foreign('fisherman_tim_id')->references('id')->on('fisherman_tim')->onDelete('restrict');
-            $table->unsignedBigInteger('Investor_id')->after('fisherman_tim_id')->required();
-            $table->foreign('Investor_id')->references('id')->on('Investor')->onDelete('restrict');
             $table->date('date');
             $table->integer('quantity');
             $table->bigInteger('fund_amount');

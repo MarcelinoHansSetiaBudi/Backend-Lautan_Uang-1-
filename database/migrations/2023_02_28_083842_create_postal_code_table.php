@@ -16,8 +16,6 @@ return new class extends Migration
         Schema::create('postal_code', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('location_id')->after('name')->required();
-            $table->foreign('location_id')->references('id')->on('location')->onDelete('restrict');
             $table->string('description', 255)->required();
             $table->timestamps();
         });

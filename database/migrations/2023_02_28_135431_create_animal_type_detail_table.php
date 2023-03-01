@@ -15,8 +15,6 @@ return new class extends Migration
     {
         Schema::create('animal_type_detail', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('animal_type_id')->after('id')->required();
-            $table->foreign('animal_type_id')->references('id')->on('animal_type')->onDelete('restrict');
             $table->bigInteger('price');
             $table->timestamps();
         });

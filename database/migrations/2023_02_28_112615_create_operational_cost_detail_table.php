@@ -15,8 +15,6 @@ return new class extends Migration
     {
         Schema::create('operational_cost_detail', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('operational_cost_id')->after('id')->required();
-            $table->foreign('operational_cost_id')->references('id')->on('operational_cost')->onDelete('restrict');
             $table->string('name');
             $table->float('price_@item');
             $table->integer('quantity');

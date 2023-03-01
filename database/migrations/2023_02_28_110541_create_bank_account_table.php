@@ -17,8 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('account_number');
-            $table->unsignedBigInteger('bank_id')->after('account_number')->required();
-            $table->foreign('bank_id')->references('id')->on('bank')->onDelete('restrict');
             $table->timestamps();
         });
     }

@@ -15,18 +15,12 @@ return new class extends Migration
     {
         Schema::create('fisherman', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('tim_id')->after('id')->required();
-            $table->foreign('tim_id')->references('id')->on('fisherman_tim')->onDelete('restrict');
             $table->string('name');
             $table->string('phone', 13);
             $table->string('email');
             $table->string('password');
             $table->string('gender', 1);
-            $table->timestamps('birth_date');
-            $table->unsignedBigInteger('location_id')->after('birth_date')->required();
-            $table->foreign('location_id')->references('id')->on('location')->onDelete('restrict');
-            $table->unsignedBigInteger('postal_code_id')->after('location_id')->required();
-            $table->foreign('postal_code_id')->references('id')->on('postal_code')->onDelete('restrict');
+            $table->date('birth_date');
             $table->enum('status',['aktif', 'non-aktif']);
             $table->integer('experience');
             $table->string('nik', 16);
