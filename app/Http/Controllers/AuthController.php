@@ -63,6 +63,9 @@ class AuthController extends Controller
         return $this->respondWithToken($token);
     }
 
+    public function checkToken() {
+        return response()->json(['success'=>true], 200);
+    }
     /**
      * Get the authenticated User.
      *
