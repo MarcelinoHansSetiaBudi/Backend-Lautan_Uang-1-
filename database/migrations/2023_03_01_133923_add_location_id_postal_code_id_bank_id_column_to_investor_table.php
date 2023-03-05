@@ -15,9 +15,7 @@ return new class extends Migration
     {
         Schema::table('investor', function (Blueprint $table) {
             $table->unsignedBigInteger('location_id')->after('birth_date')->required();
-            $table->foreign('location_id')->references('id')->on('location')->onDelete('restrict');
-            $table->unsignedBigInteger('postal_code_id')->after('location_id')->required();
-            $table->foreign('postal_code_id')->references('id')->on('postal_code')->onDelete('restrict');
+            $table->foreign('location_id')->references('id')->on('locations')->onDelete('restrict');
             $table->unsignedBigInteger('bank_id')->after('identity_photo')->required();
             $table->foreign('bank_id')->references('id')->on('bank')->onDelete('restrict');
         });

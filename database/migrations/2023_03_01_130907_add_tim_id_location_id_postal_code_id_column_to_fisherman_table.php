@@ -17,9 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('tim_id')->after('id')->required();
             $table->foreign('tim_id')->references('id')->on('fisherman_tim')->onDelete('restrict');
             $table->unsignedBigInteger('location_id')->after('birth_date')->required();
-            $table->foreign('location_id')->references('id')->on('location')->onDelete('restrict');
-            $table->unsignedBigInteger('postal_code_id')->after('location_id')->required();
-            $table->foreign('postal_code_id')->references('id')->on('postal_code')->onDelete('restrict');
+            $table->foreign('location_id')->references('id')->on('locations')->onDelete('restrict');
         });
     }
 

@@ -19,9 +19,10 @@ return new class extends Migration
             $table->string('phone', 13);
             $table->string('email');
             $table->string('password');
-            $table->string('gender', 1);
+            $table->enum('gender',['male', 'female']);
             $table->date('birth_date');
             $table->enum('status',['aktif', 'non-aktif']);
+            $table->enum('role',['member', 'manager']);
             $table->integer('experience');
             $table->string('nik', 16);
             $table->binary('image');

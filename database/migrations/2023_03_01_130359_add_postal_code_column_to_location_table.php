@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('postal_code', function (Blueprint $table) {
-            $table->unsignedBigInteger('location_id')->after('name')->required();
-            $table->foreign('location_id')->references('id')->on('location');
+        Schema::table('locations', function (Blueprint $table) {
+            $table->unsignedBigInteger('postal_code_id')->after('kelurahan_des_name')->required();
+            $table->foreign('postal_code_id')->references('id')->on('postal_code');
         });
     }
 

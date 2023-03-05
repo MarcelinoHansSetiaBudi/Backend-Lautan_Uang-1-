@@ -19,24 +19,20 @@ class JWTAuthentication
      */
     public function handle(Request $request, Closure $next)
     {
-        try{
+        try {
             $user = JWTAuth::parseToken()->authenticate();
-        }
-        catch(Exception $e){
-            if($e instanceof TokenExpiredException)
-            {
+            
+        } catch (Exception $e) {
+            if ($e instanceof TokenExpiredException) {
                 $newToken = JWTAuth::parseToken()->refresh();
-                return response()->json(['success'=>false, 'token'=>$newToken, 'status' => 'expired'], 401);
-            }else if($e instanceof TokenInvalidException)
-            {
-                return response()->json(['success'=>false, 'message'=>'token Invalid'], 401);
-            }
-            else
-            {
-                return response()->json(['success'=>false, 'message'=>'token Not found'], 401);
+                return response()->json(['success' => false, 'token' => $newToken, 'status' => 'expired'], 401);
+            } else if ($e instanceof TokenInvalidException) {
+                return response()->json(['success' => false, 'message' => 'token Invalid'], 401);
+            } else {
+                return response()->json(['success' => false, 'message' => 'token Not found'], 401);
             }
         }
-        
+
         return $next($request);
     }
 }
