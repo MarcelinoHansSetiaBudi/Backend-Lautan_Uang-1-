@@ -40,10 +40,11 @@ return [
             'driver' => 'jwt',
             'provider' => 'users',
         ],
-        // 'web' => [
-        //     'driver' => 'session',
-        //     'provider' => 'users',
-        // ],
+
+        'api_investor' => [
+            'driver' => 'jwt',
+            'provider' => 'investor',
+        ],
     ],
 
     /*
@@ -69,10 +70,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'investor' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Investor::class,
+        ],
     ],
 
     /*

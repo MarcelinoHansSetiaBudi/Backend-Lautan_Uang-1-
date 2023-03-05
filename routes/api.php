@@ -7,6 +7,7 @@ use App\Http\Controllers\FishermanController;
 use App\Http\Controllers\FishermanTimController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PostalCodeController;
+use App\Http\Controllers\InvestorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,19 @@ Route::group([
     Route::post('logout', [AuthController::class, 'logout']);
     Route::post('refresh', [AuthController::class, 'refresh']);
     Route::post('me', [AuthController::class, 'me']);
+});
+
+// Investor route login register
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'investor'
+
+], function ($router) {
+    Route::post('register', [InvestorController::class, 'register']);
+    Route::post('login', [InvestorController::class, 'login']);
+    Route::post('logout', [InvestorController::class, 'logout']);
+    Route::post('refresh', [InvestorController::class, 'refresh']);
+    Route::post('me', [InvestorController::class, 'me']);
 });
 
 Route::group([
