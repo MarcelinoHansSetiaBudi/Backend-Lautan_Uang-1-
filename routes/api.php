@@ -1,10 +1,14 @@
 <?php
 
+use App\Http\Controllers\AnimalTypeController;
+use App\Http\Controllers\AnimalTypeDetailController;
+use App\Http\Controllers\AssetsDetailController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FishermanController;
 use App\Http\Controllers\FishermanTimController;
+use App\Http\Controllers\FishermanCatchController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PostalCodeController;
 use App\Http\Controllers\InvestorController;
@@ -72,6 +76,7 @@ Route::group([
 Route::get('location', [LocationController::class, 'index']);
 Route::post('location', [LocationController::class, 'store']);
 Route::get('location/{id}', [LocationController::class, 'show']);
+Route::put('location/{id}', [LocationController::class, 'update']);
 Route::delete('location/{id}', [LocationController::class, 'destroy']);
 
 
@@ -79,9 +84,36 @@ Route::delete('location/{id}', [LocationController::class, 'destroy']);
 Route::get('postal-code', [PostalCodeController::class, 'index']);
 Route::post('postal-code', [PostalCodeController::class, 'store']);
 Route::get('postal-code/{id}', [PostalCodeController::class, 'show']);
+Route::put('postal-code/{id}', [PostalCodeController::class, 'update']);
 Route::delete('postal-code/{id}', [PostalCodeController::class, 'destroy']);
 
+// Animal Type
+Route::get('animal-type', [AnimalTypeController::class, 'index']);
+Route::post('animal-type',[AnimalTypeController::class, 'store']);
+Route::get('animal-type/{id}', [AnimalTypeController::class, 'show']);
+Route::put('animal-type/{id}', [AnimalTypeController::class, 'update']);
+Route::delete('animal-type/{id}', [AnimalTypeController::class, 'destroy']);
 
+// Animal Type Detail
+Route::get('animal-type-detail', [AnimalTypeDetailController::class, 'index']);
+Route::post('animal-type-detail', [AnimalTypeDetailController::class, 'store']);
+Route::get('animal-type-detail/{id}', [AnimalTypeDetailController::class, 'show']);
+Route::put('animal-type-detail/{id}', [AnimalTypeDetailController::class, 'update']);
+Route::delete('animal-type-detail/{id}', [AnimalTypeDetailController::class, 'destroy']);
+
+// Assets Detail
+Route::get('assets-detail', [AssetsDetailController::class, 'index']);
+Route::post('assets-detail', [AssetsDetailController::class, 'store']);
+Route::get('assets-detail/{id}', [AssetsDetailController::class, 'show']);
+Route::put('assets-detail/{id}', [AssetsDetailController::class, 'update']);
+Route::delete('assets-detail/{id}', [AssetsDetailController::class, 'destroy']);
+
+// Fisherman Catch
+Route::get('fisherman-catch', [FishermanCatchController::class, 'index']);
+Route::post('fisherman-catch', [FishermanCatchController::class, 'store']);
+Route::get('fisherman-catch/{id}', [FishermanCatchController::class, 'show']);
+Route::put('fisherman-catch/{id}', [FishermanCatchController::class, 'update']);
+Route::delete('fisherman-catch/{id}', [FishermanCatchController::class, 'destroy']);
 
 
 // handle route not found

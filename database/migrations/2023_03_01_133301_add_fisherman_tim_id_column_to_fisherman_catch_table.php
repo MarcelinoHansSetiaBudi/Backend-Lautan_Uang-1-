@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('fisherman_catch', function (Blueprint $table) {
-            $table->unsignedBigInteger('fisherman_tim_id')->after('id')->required();
+            $table->unsignedBigInteger('fisherman_tim_id')->after('id')->nullable();
             $table->foreign('fisherman_tim_id')->references('id')->on('fisherman_tim')->onDelete('restrict');
         });
     }

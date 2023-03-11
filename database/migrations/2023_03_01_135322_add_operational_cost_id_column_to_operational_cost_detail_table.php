@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('operational_cost_detail', function (Blueprint $table) {
-            $table->unsignedBigInteger('operational_cost_id')->after('id')->required();
+            $table->unsignedBigInteger('operational_cost_id')->after('id')->nullable();
             $table->foreign('operational_cost_id')->references('id')->on('operational_cost')->onDelete('restrict');
         });
     }

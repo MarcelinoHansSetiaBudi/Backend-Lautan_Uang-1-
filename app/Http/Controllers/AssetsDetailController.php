@@ -2,25 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\FishermanTim;
+use App\Models\AssetsDetail;
 use Illuminate\Http\Request;
 
-class FishermanTimController extends Controller
+class AssetsDetailController extends Controller
 {
     public function index()
     {
-        $fishermanTims = FishermanTim::all();
+        $assetsdetail = AssetsDetail::all();
         return response()->json([
             'status' => 'success',
-            'data' => $fishermanTims
+            'data' => $assetsdetail
         ]);
     }
 
     // Menampilkan data berdasarkan ID
     public function show($id)
     {
-        $fishermanTim = FishermanTim::find($id);
-        if (!$fishermanTim) {
+        $assetsdetail = AssetsDetail::find($id);
+        if (!$assetsdetail) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Data not found'
@@ -29,7 +29,7 @@ class FishermanTimController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'data' => $fishermanTim
+            'data' => $assetsdetail
         ]);
     }
 
@@ -38,22 +38,15 @@ class FishermanTimController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required',
-            'phone' => 'required',
-            'year_formed' => 'required|integer',
-            'address' => 'required',
-            'balance' => 'required|integer',
             'quantity' => 'required|integer',
-            'total_assets' => 'required|integer',
-            'divident_yield' => 'nullable|numeric',
-            'debt_to_equity_ratio' => 'nullable|numeric',
-            'market_cap' => 'nullable|integer',
+            'purchase_date' => 'required|date'
         ]);
 
-        $fishermanTim = FishermanTim::create($validatedData);
+        $assetsdetail = AssetsDetail::create($validatedData);
 
         return response()->json([
             'status' => 'success',
-            'data' => $fishermanTim
+            'data' => $assetsdetail
         ], 201);
     }
      
@@ -63,45 +56,38 @@ class FishermanTimController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required',
-            'phone' => 'required',
-            'year_formed' => 'required|integer',
-            'address' => 'required',
-            'balance' => 'required|integer',
             'quantity' => 'required|integer',
-            'total_assets' => 'required|integer',
-            'divident_yield' => 'nullable|numeric',
-            'debt_to_equity_ratio' => 'nullable|numeric',
-            'market_cap' => 'nullable|integer',
+            'purchase_date' => 'required|date'
         ]);
 
-        $fishermanTim = FishermanTim::find($id);
-        if (!$fishermanTim) {
+        $assetsdetail = AssetsDetail::find($id);
+        if (!$assetsdetail) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Data not found'
             ], 404);
         }
 
-        $fishermanTim->update($validatedData);
+        $assetsdetail->update($validatedData);
 
         return response()->json([
             'status' => 'success',
-            'data' => $fishermanTim
+            'data' => $assetsdetail
         ]);
     }
 
     // Menghapus data
     public function destroy($id)
     {
-        $fishermanTim = FishermanTim::find($id);
-        if (!$fishermanTim) {
+        $assetsdetail = AssetsDetail::find($id);
+        if (!$assetsdetail) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Data not found'
             ], 404);
         }
 
-        $fishermanTim->delete();
+        $assetsdetail->delete();
 
         return response()->json([
             'status' => 'success',
