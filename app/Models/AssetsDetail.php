@@ -12,8 +12,11 @@ class AssetsDetail extends Model
     protected $table = 'assets_detail';
 
     protected $fillable = [
+        'fisherman_tim_id',
         'name',
+        'type_id',
         'quantity',
+        'price',
         'purchase_date'
     ];
 

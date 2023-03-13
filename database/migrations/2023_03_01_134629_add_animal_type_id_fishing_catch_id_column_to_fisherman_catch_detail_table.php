@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('fisherman_catch_detail', function (Blueprint $table) {
             $table->unsignedBigInteger('animal_type_id')->after('name')->nullable();
-            $table->foreign('animal_type_id')->references('id')->on('animal_type_detail')->onDelete('restrict');
+            $table->foreign('animal_type_id')->references('id')->on('animal_type')->onDelete('restrict');
             $table->unsignedBigInteger('fishing_catch_id')->after('animal_type_id')->nullable();
             $table->foreign('fishing_catch_id')->references('id')->on('fisherman_catch')->onDelete('restrict');
         });

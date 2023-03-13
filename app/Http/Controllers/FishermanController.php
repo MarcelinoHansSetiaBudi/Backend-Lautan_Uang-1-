@@ -63,7 +63,7 @@ class FishermanController extends Controller
             'phone' => 'sometimes|required|unique:fisherman,phone,' . $fisherman->id . '|numeric',
             'email' => 'sometimes|required|email|unique:fisherman,email,' . $fisherman->id,
             'password' => 'sometimes|required|min:6',
-            'gender' => 'sometimes|required|in:M,F',
+            'gender' => 'sometimes|required|in:male,female',
             'birth_date' => 'sometimes|required|date',
             'status' => 'sometimes|required|in:aktif,non-aktif',
             'experience' => 'sometimes|required|integer',

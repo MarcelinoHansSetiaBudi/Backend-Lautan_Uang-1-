@@ -1,25 +1,26 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\AnimalTypeDetail;
+
+use App\Models\FishermanCatchDetail;
 use Illuminate\Http\Request;
 
-class AnimalTypeDetailController extends Controller
+class FishermanCatchDetailController extends Controller
 {
     public function index()
     {
-        $animaltypeDetail = AnimalTypeDetail::all();
+        $fishermancatchDetail = FishermanCatchDetail::all();
         return response()->json([
             'status' => 'success',
-            'data' => $animaltypeDetail
+            'data' => $fishermancatchDetail
         ]);
     }
 
     // Menampilkan data berdasarkan ID
     public function show($id)
     {
-        $animaltypeDetail = AnimalTypeDetail::find($id);
-        if (!$animaltypeDetail) {
+        $fishermancatchDetail = FishermanCatchDetail::find($id);
+        if (!$fishermancatchDetail) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Data not found'
@@ -28,7 +29,7 @@ class AnimalTypeDetailController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'data' => $animaltypeDetail
+            'data' => $fishermancatchDetail
         ]);
     }
 
@@ -36,14 +37,17 @@ class AnimalTypeDetailController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'price' => 'required'
+            'name' => 'required',
+            'animal_type_id' => 'required|integer',
+            'fishing_catch_id' => 'required|integer',
+            'price' => 'required|integer'
         ]);
 
-        $animaltypeDetail = AnimalTypeDetail::create($validatedData);
+        $fishermancatchDetail = FishermanCatchDetail::create($validatedData);
 
         return response()->json([
             'status' => 'success',
-            'data' => $animaltypeDetail
+            'data' => $fishermancatchDetail
         ], 201);
     }
      
@@ -52,37 +56,40 @@ class AnimalTypeDetailController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'price' => 'required'
+            'name' => 'sometimes|required',
+            'animal_type_id' => 'sometimes|required|integer',
+            'fishing_catch_id' => 'sometimes|required|integer',
+            'price' => 'sometimes|required|integer'
         ]);
 
-        $animaltypeDetail = AnimalTypeDetail::find($id);
-        if (!$animaltypeDetail) {
+        $fishermancatchDetail = FishermanCatchDetail::find($id);
+        if (!$fishermancatchDetail) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Data not found'
             ], 404);
         }
 
-        $animaltypeDetail->update($validatedData);
+        $fishermancatchDetail->update($validatedData);
 
         return response()->json([
             'status' => 'success',
-            'data' => $animaltypeDetail
+            'data' => $fishermancatchDetail
         ]);
     }
 
     // Menghapus data
     public function destroy($id)
     {
-        $animaltypeDetail = AnimalTypeDetail::find($id);
-        if (!$animaltypeDetail) {
+        $fishermancatchDetail = FishermanCatchDetail::find($id);
+        if (!$fishermancatchDetail) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Data not found'
             ], 404);
         }
 
-        $animaltypeDetail->delete();
+        $fishermancatchDetail->delete();
 
         return response()->json([
             'status' => 'success',
@@ -90,3 +97,4 @@ class AnimalTypeDetailController extends Controller
         ]);
     }
 }
+

@@ -52,7 +52,7 @@ class AnimalTypeController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'name' => 'required'
+            'name' => 'sometimes|required'
         ]);
 
         $animaltype = AnimalType::find($id);

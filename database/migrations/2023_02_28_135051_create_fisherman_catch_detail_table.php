@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('fisherman_catch_detail', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('weight');
+            $table->integer('price');
             $table->timestamps();
         });
     }

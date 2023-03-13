@@ -12,6 +12,10 @@ use App\Http\Controllers\FishermanCatchController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PostalCodeController;
 use App\Http\Controllers\InvestorController;
+use App\Http\Controllers\TypeAssetController;
+use App\Http\Controllers\CategoryOperationalCostController;
+use App\Http\Controllers\FishermanCatchDetailController;
+use App\Http\Controllers\PaymentMethodController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,33 +91,101 @@ Route::get('postal-code/{id}', [PostalCodeController::class, 'show']);
 Route::put('postal-code/{id}', [PostalCodeController::class, 'update']);
 Route::delete('postal-code/{id}', [PostalCodeController::class, 'destroy']);
 
+Route::group([
+    'middleware' => ['api', 'jwt.auth'],
+
+], function ($router) {
 // Animal Type
-Route::get('animal-type', [AnimalTypeController::class, 'index']);
-Route::post('animal-type',[AnimalTypeController::class, 'store']);
-Route::get('animal-type/{id}', [AnimalTypeController::class, 'show']);
-Route::put('animal-type/{id}', [AnimalTypeController::class, 'update']);
-Route::delete('animal-type/{id}', [AnimalTypeController::class, 'destroy']);
+    Route::get('animal-type', [AnimalTypeController::class, 'index']);
+    Route::post('animal-type',[AnimalTypeController::class, 'store']);
+    Route::get('animal-type/{id}', [AnimalTypeController::class, 'show']);
+    Route::put('animal-type/{id}', [AnimalTypeController::class, 'update']);
+    Route::delete('animal-type/{id}', [AnimalTypeController::class, 'destroy']);
+});
 
+Route::group([
+    'middleware' => ['api', 'jwt.auth'],
+
+], function ($router) {
 // Animal Type Detail
-Route::get('animal-type-detail', [AnimalTypeDetailController::class, 'index']);
-Route::post('animal-type-detail', [AnimalTypeDetailController::class, 'store']);
-Route::get('animal-type-detail/{id}', [AnimalTypeDetailController::class, 'show']);
-Route::put('animal-type-detail/{id}', [AnimalTypeDetailController::class, 'update']);
-Route::delete('animal-type-detail/{id}', [AnimalTypeDetailController::class, 'destroy']);
+    Route::get('animal-type-detail', [AnimalTypeDetailController::class, 'index']);
+    Route::post('animal-type-detail', [AnimalTypeDetailController::class, 'store']);
+    Route::get('animal-type-detail/{id}', [AnimalTypeDetailController::class, 'show']);
+    Route::put('animal-type-detail/{id}', [AnimalTypeDetailController::class, 'update']);
+    Route::delete('animal-type-detail/{id}', [AnimalTypeDetailController::class, 'destroy']);
+});
 
+Route::group([
+    'middleware' => ['api', 'jwt.auth'],
+
+], function ($router) {
 // Assets Detail
-Route::get('assets-detail', [AssetsDetailController::class, 'index']);
-Route::post('assets-detail', [AssetsDetailController::class, 'store']);
-Route::get('assets-detail/{id}', [AssetsDetailController::class, 'show']);
-Route::put('assets-detail/{id}', [AssetsDetailController::class, 'update']);
-Route::delete('assets-detail/{id}', [AssetsDetailController::class, 'destroy']);
+    Route::get('assets-detail', [AssetsDetailController::class, 'index']);
+    Route::post('assets-detail', [AssetsDetailController::class, 'store']);
+    Route::get('assets-detail/{id}', [AssetsDetailController::class, 'show']);
+    Route::put('assets-detail/{id}', [AssetsDetailController::class, 'update']);
+    Route::delete('assets-detail/{id}', [AssetsDetailController::class, 'destroy']);
+});
 
+Route::group([
+    'middleware' => ['api', 'jwt.auth'],
+
+], function ($router) {
+// Type Asset
+    Route::get('type-asset', [TypeAssetController::class, 'index']);
+    Route::post('type-asset', [TypeAssetController::class, 'store']);
+    Route::get('type-asset/{id}', [TypeAssetController::class, 'show']);
+    Route::put('type-asset/{id}', [TypeAssetController::class, 'update']);
+    Route::delete('type-asset/{id}', [TypeAssetController::class, 'destroy']);
+});
+
+Route::group([
+    'middleware' => ['api', 'jwt.auth'],
+
+], function ($router) {
 // Fisherman Catch
-Route::get('fisherman-catch', [FishermanCatchController::class, 'index']);
-Route::post('fisherman-catch', [FishermanCatchController::class, 'store']);
-Route::get('fisherman-catch/{id}', [FishermanCatchController::class, 'show']);
-Route::put('fisherman-catch/{id}', [FishermanCatchController::class, 'update']);
-Route::delete('fisherman-catch/{id}', [FishermanCatchController::class, 'destroy']);
+    Route::get('fisherman-catch', [FishermanCatchController::class, 'index']);
+    Route::post('fisherman-catch', [FishermanCatchController::class, 'store']);
+    Route::get('fisherman-catch/{id}', [FishermanCatchController::class, 'show']);
+    Route::put('fisherman-catch/{id}', [FishermanCatchController::class, 'update']);
+    Route::delete('fisherman-catch/{id}', [FishermanCatchController::class, 'destroy']);
+});
+
+Route::group([
+    'middleware' => ['api', 'jwt.auth'],
+
+], function ($router) {
+// Fisherman Catch Detail
+    Route::get('fisherman-catch-detail', [FishermanCatchDetailController::class, 'index']);
+    Route::post('fisherman-catch-detail', [FishermanCatchDetailController::class, 'store']);
+    Route::get('fisherman-catch-detail/{id}', [CategoryOperationalCostController::class, 'show']);
+    Route::put('fisherman-catch-detail/{id}', [FishermanCatchDetailController::class, 'update']);
+    Route::delete('fisherman-catch-detail/{id}', [FishermanCatchDetailController::class, 'destroy']);
+});
+
+Route::group([
+    'middleware' => ['api', 'jwt.auth'],
+
+], function ($router) {
+// Category Operational Cost
+    Route::get('category-operational-cost', [CategoryOperationalCostController::class, 'index']);
+    Route::post('category-operational-cost', [CategoryOperationalCostController::class, 'store']);
+    Route::get('category-operational-cost/{id}', [CategoryOperationalCostController::class, 'show']);
+    Route::put('category-operational-cost/{id}', [CategoryOperationalCostController::class, 'update']);
+    Route::delete('category-operational-cost/{id}', [CategoryOperationalCostController::class, 'destroy']);
+});
+
+Route::group([
+    'middleware' => ['api', 'jwt.auth'],
+
+], function ($router) {
+// Payment Method
+    Route::get('payment-method', [PaymentMethodController::class, 'index']);
+    Route::post('payment-method', [PaymentMethodController::class, 'store']);
+    Route::get('payment-method/{id}', [PaymentMethodController::class, 'show']);
+    Route::put('payment-method/{id}', [PaymentMethodController::class, 'update']);
+    Route::delete('payment-method/{id}', [PaymentMethodController::class, 'destroy']);
+});
 
 
 // handle route not found

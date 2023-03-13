@@ -55,9 +55,10 @@ class AssetsDetailController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'name' => 'required',
-            'quantity' => 'required|integer',
-            'purchase_date' => 'required|date'
+            'name' => 'sometimes|required',
+            'quantity' => 'sometimes|required|integer',
+            'price' => 'sometimes|required|integer',
+            'purchase_date' => 'sometimes|required|date'
         ]);
 
         $assetsdetail = AssetsDetail::find($id);

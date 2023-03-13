@@ -18,6 +18,7 @@ class FishermanTim extends Model
         'year_formed',
         'address',
         'balance',
+        'location_id',
         'quantity',
         'total_assets',
         'divident_yield',

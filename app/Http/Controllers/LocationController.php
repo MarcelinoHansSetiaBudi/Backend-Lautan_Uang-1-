@@ -80,7 +80,7 @@ class LocationController extends Controller
             'kota_kab_name' => 'required',
             'kecamatan_name' => 'required',
             'kelurahan_des_name' => 'required',
-            'postal_code_id' => 'required'
+            'postal_code_id' => 'required|integer'
         ]);
 
         $location->country_name = $request->input('country_name');
