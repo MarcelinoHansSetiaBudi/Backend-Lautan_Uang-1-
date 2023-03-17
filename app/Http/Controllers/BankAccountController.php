@@ -2,25 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\FishermanCatch;
+use App\Models\BankAccount;
 use Illuminate\Http\Request;
 
-class FishermanCatchController extends Controller
+class BankAccountController extends Controller
 {
     public function index()
     {
-        $fishermancatch = FishermanCatch::all();
+        $bankaccount = BankAccount::all();
         return response()->json([
             'status' => 'success',
-            'data' => $fishermancatch
+            'data' => $bankaccount
         ]);
     }
 
     // Menampilkan data berdasarkan ID
     public function show($id)
     {
-        $fishermancatch = FishermanCatch::find($id);
-        if (!$fishermancatch) {
+        $bankaccount = BankAccount::find($id);
+        if (!$bankaccount) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Data not found'
@@ -29,7 +29,7 @@ class FishermanCatchController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'data' => $fishermancatch
+            'data' => $bankaccount
         ]);
     }
 
@@ -37,15 +37,14 @@ class FishermanCatchController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'fisherman_tim_id' => 'required|integer',
-            'weight' => 'required|integer'
+            'name' => 'required',
         ]);
 
-        $fishermancatch = FishermanCatch::create($validatedData);
+        $bankaccount = BankAccount::create($validatedData);
 
         return response()->json([
             'status' => 'success',
-            'data' => $fishermancatch
+            'data' => $bankaccount
         ], 201);
     }
      
@@ -54,38 +53,37 @@ class FishermanCatchController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'fisherman_tim_id' => 'sometimes|required|integer',
-            'weight' => 'sometimes|required|integer'
+            'name' => 'sometimes|required'
         ]);
 
-        $fishermancatch = FishermanCatch::find($id);
-        if (!$fishermancatch) {
+        $bankaccount = BankAccount::find($id);
+        if (!$bankaccount) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Data not found'
             ], 404);
         }
 
-        $fishermancatch->update($validatedData);
+        $bankaccount->update($validatedData);
 
         return response()->json([
             'status' => 'success',
-            'data' => $fishermancatch
+            'data' => $bankaccount
         ]);
     }
 
     // Menghapus data
     public function destroy($id)
     {
-        $fishermancatch = FishermanCatch::find($id);
-        if (!$fishermancatch) {
+        $bankaccount = BankAccount::find($id);
+        if (!$bankaccount) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Data not found'
             ], 404);
         }
 
-        $fishermancatch->delete();
+        $bankaccount->delete();
 
         return response()->json([
             'status' => 'success',

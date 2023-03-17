@@ -37,8 +37,11 @@ class AssetsDetailController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
+            'fisherman_tim_id' => 'required|integer',
             'name' => 'required',
+            'type_id' => 'required|integer',
             'quantity' => 'required|integer',
+            'price' => 'required',
             'purchase_date' => 'required|date'
         ]);
 
@@ -55,10 +58,12 @@ class AssetsDetailController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
+            'fisherman_tim_id' => 'sometimes|required|integer',
             'name' => 'sometimes|required',
+            'type_id' => 'sometimes|required|integer',
             'quantity' => 'sometimes|required|integer',
-            'price' => 'sometimes|required|integer',
-            'purchase_date' => 'sometimes|required|date'
+            'price' => 'sometimes|required',
+            'purchase_date' => 'somestimes|required|date'
         ]);
 
         $assetsdetail = AssetsDetail::find($id);

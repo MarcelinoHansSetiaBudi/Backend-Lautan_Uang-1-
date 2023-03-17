@@ -3,9 +3,12 @@
 use App\Http\Controllers\AnimalTypeController;
 use App\Http\Controllers\AnimalTypeDetailController;
 use App\Http\Controllers\AssetsDetailController;
+use App\Http\Controllers\OperationalCostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BankAccountController;
+use App\Http\Controllers\BankController;
 use App\Http\Controllers\FishermanController;
 use App\Http\Controllers\FishermanTimController;
 use App\Http\Controllers\FishermanCatchController;
@@ -15,6 +18,7 @@ use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\TypeAssetController;
 use App\Http\Controllers\CategoryOperationalCostController;
 use App\Http\Controllers\FishermanCatchDetailController;
+use App\Http\Controllers\OperationalCostDetailController;
 use App\Http\Controllers\PaymentMethodController;
 
 /*
@@ -158,7 +162,7 @@ Route::group([
 // Fisherman Catch Detail
     Route::get('fisherman-catch-detail', [FishermanCatchDetailController::class, 'index']);
     Route::post('fisherman-catch-detail', [FishermanCatchDetailController::class, 'store']);
-    Route::get('fisherman-catch-detail/{id}', [CategoryOperationalCostController::class, 'show']);
+    Route::get('fisherman-catch-detail/{id}', [FishermanCatchDetailController::class, 'show']);
     Route::put('fisherman-catch-detail/{id}', [FishermanCatchDetailController::class, 'update']);
     Route::delete('fisherman-catch-detail/{id}', [FishermanCatchDetailController::class, 'destroy']);
 });
@@ -179,12 +183,60 @@ Route::group([
     'middleware' => ['api', 'jwt.auth'],
 
 ], function ($router) {
+// Operational Cost
+    Route::get('operational-cost', [OperationalCostController::class, 'index']);
+    Route::post('operational-cost', [OperationalCostController::class, 'store']);
+    Route::get('operational-cost/{id}', [OperationalCostController::class, 'show']);
+    Route::put('operational-cost/{id}', [OperationalCostController::class, 'update']);
+    Route::delete('operational-cost/{id}', [OperationalCostController::class, 'destroy']);
+});
+
+Route::group([
+    'middleware' => ['api', 'jwt.auth'],
+
+], function ($router) {
+// Operational Cost Detail
+    Route::get('operational-cost-detail', [OperationalCostDetailController::class, 'index']);
+    Route::post('operational-cost-detail', [OperationalCostDetailController::class, 'store']);
+    Route::get('operational-cost-detail/{id}', [OperationalCostDetailController::class, 'show']);
+    Route::put('operational-cost-detail/{id}', [OperationalCostDetailController::class, 'update']);
+    Route::delete('operational-cost-detail/{id}', [OperationalCostDetailController::class, 'destroy']);
+});
+
+Route::group([
+    'middleware' => ['api', 'jwt.auth'],
+
+], function ($router) {
 // Payment Method
     Route::get('payment-method', [PaymentMethodController::class, 'index']);
     Route::post('payment-method', [PaymentMethodController::class, 'store']);
     Route::get('payment-method/{id}', [PaymentMethodController::class, 'show']);
     Route::put('payment-method/{id}', [PaymentMethodController::class, 'update']);
     Route::delete('payment-method/{id}', [PaymentMethodController::class, 'destroy']);
+});
+
+Route::group([
+    'middleware' => ['api', 'jwt.auth'],
+
+], function ($router) {
+// Bank
+    Route::get('bank', [BankController::class, 'index']);
+    Route::post('bank', [BankController::class, 'store']);
+    Route::get('bank/{id}', [BankController::class, 'show']);
+    Route::put('bank/{id}', [BankController::class, 'update']);
+    Route::delete('bank/{id}', [BankController::class, 'destroy']);
+});
+
+Route::group([
+    'middleware' => ['api', 'jwt.auth'],
+
+], function ($router) {
+// Bank Account
+    Route::get('bank-account', [BankAccountController::class, 'index']);
+    Route::post('bank-account', [BankAccountController::class, 'store']);
+    Route::get('bank-account/{id}', [BankAccountController::class, 'show']);
+    Route::put('bank-account/{id}', [BankAccountController::class, 'update']);
+    Route::delete('bank-account/{id}', [BankAccountController::class, 'destroy']);
 });
 
 

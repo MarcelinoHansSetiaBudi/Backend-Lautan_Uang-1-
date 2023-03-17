@@ -2,25 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\FishermanCatch;
+use App\Models\OperationalCostDetail;
 use Illuminate\Http\Request;
 
-class FishermanCatchController extends Controller
+class OperationalCostDetailController extends Controller
 {
     public function index()
     {
-        $fishermancatch = FishermanCatch::all();
+        $operationalcostDetail = OperationalCostDetail::all();
         return response()->json([
             'status' => 'success',
-            'data' => $fishermancatch
+            'data' => $operationalcostDetail
         ]);
     }
 
     // Menampilkan data berdasarkan ID
     public function show($id)
     {
-        $fishermancatch = FishermanCatch::find($id);
-        if (!$fishermancatch) {
+        $operationalcostDetail = OperationalCostDetail::find($id);
+        if (!$operationalcostDetail) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Data not found'
@@ -29,7 +29,7 @@ class FishermanCatchController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'data' => $fishermancatch
+            'data' => $operationalcostDetail
         ]);
     }
 
@@ -37,15 +37,17 @@ class FishermanCatchController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'fisherman_tim_id' => 'required|integer',
-            'weight' => 'required|integer'
+            'operational_cost_id' => 'required|integer',
+            'name' => 'required',
+            'price_item' => 'required',
+            'quantity' => 'required|integer'
         ]);
 
-        $fishermancatch = FishermanCatch::create($validatedData);
+        $operationalcostDetail = OperationalCostDetail::create($validatedData);
 
         return response()->json([
             'status' => 'success',
-            'data' => $fishermancatch
+            'data' => $operationalcostDetail
         ], 201);
     }
      
@@ -54,38 +56,40 @@ class FishermanCatchController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'fisherman_tim_id' => 'sometimes|required|integer',
-            'weight' => 'sometimes|required|integer'
+            'operational_cost_id' => 'sometimes|required|integer',
+            'name' => 'sometimes|required',
+            'price_item' => 'sometimes|required',
+            'quantity' => 'sometimes|required|integer'
         ]);
 
-        $fishermancatch = FishermanCatch::find($id);
-        if (!$fishermancatch) {
+        $operationalcostDetail = OperationalCostDetail::find($id);
+        if (!$operationalcostDetail) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Data not found'
             ], 404);
         }
 
-        $fishermancatch->update($validatedData);
+        $operationalcostDetail->update($validatedData);
 
         return response()->json([
             'status' => 'success',
-            'data' => $fishermancatch
+            'data' => $operationalcostDetail
         ]);
     }
 
     // Menghapus data
     public function destroy($id)
     {
-        $fishermancatch = FishermanCatch::find($id);
-        if (!$fishermancatch) {
+        $operationalcostDetail = OperationalCostDetail::find($id);
+        if (!$operationalcostDetail) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Data not found'
             ], 404);
         }
 
-        $fishermancatch->delete();
+        $operationalcostDetail->delete();
 
         return response()->json([
             'status' => 'success',
