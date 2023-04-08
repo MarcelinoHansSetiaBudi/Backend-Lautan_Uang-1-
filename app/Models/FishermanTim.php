@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Location;
 
 
 class FishermanTim extends Model
@@ -25,4 +26,9 @@ class FishermanTim extends Model
         'debt_to_equity_ratio',
         'market_cap'
     ];
+
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
+    }
 }

@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\FishermanTim;
+
 
 class Location extends Model
 {
@@ -17,4 +19,9 @@ class Location extends Model
         'kelurahan_des_name',
         'postal_code_id',
     ];
+
+    public function fishermanTeams()
+    {
+        return $this->hasMany(FishermanTim::class);
+    }
 }

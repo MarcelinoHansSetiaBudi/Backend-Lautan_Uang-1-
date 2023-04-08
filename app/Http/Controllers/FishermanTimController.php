@@ -9,7 +9,7 @@ class FishermanTimController extends Controller
 {
     public function index()
     {
-        $fishermanTims = FishermanTim::all();
+        $fishermanTims = FishermanTim::with('location')->get();
         return response()->json([
             'status' => 'success',
             'data' => $fishermanTims
