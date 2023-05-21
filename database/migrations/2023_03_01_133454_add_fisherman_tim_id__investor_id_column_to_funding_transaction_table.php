@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('fisherman_tim_id')->after('id')->nullable();
             $table->foreign('fisherman_tim_id')->references('id')->on('fisherman_tim')->onDelete('restrict');
             $table->unsignedBigInteger('investors_id')->after('fisherman_tim_id')->nullable();
-            $table->foreign('investors_id')->references('id')->on('investorss')->onDelete('restrict');
+            $table->foreign('investors_id')->references('id')->on('investors')->onDelete('restrict');
         });
     }
 
