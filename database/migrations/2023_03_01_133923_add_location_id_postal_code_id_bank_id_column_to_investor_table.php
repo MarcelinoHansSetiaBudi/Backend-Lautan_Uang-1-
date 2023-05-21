@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('investor', function (Blueprint $table) {
+        Schema::table('investors', function (Blueprint $table) {
             $table->unsignedBigInteger('location_id')->after('birth_date')->nullable();
             $table->foreign('location_id')->references('id')->on('locations')->onDelete('restrict');
             $table->unsignedBigInteger('bank_id')->after('identity_photo')->nullable();
@@ -28,7 +28,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('investor', function (Blueprint $table) {
+        Schema::table('investors', function (Blueprint $table) {
             $table->dropForeign(['location_id']);
             $table->dropColumn('location_id');
             $table->dropForeign(['postal_code_id']);
