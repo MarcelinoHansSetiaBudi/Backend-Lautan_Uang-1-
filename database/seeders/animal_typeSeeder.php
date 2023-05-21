@@ -16,6 +16,6 @@ class animal_typeSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\animal_type::factory(10)->create();
+        // \App\Models\animal_type::factory(10)->create();
     }
 }
