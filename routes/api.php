@@ -14,7 +14,7 @@ use App\Http\Controllers\FishermanTimController;
 use App\Http\Controllers\FishermanCatchController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PostalCodeController;
-use App\Http\Controllers\InvestorController;
+use App\Http\Controllers\InvestorsController;
 use App\Http\Controllers\TypeAssetController;
 use App\Http\Controllers\CategoryOperationalCostController;
 use App\Http\Controllers\FishermanCatchDetailController;
@@ -50,11 +50,11 @@ Route::group([
     'prefix' => 'investor'
 
 ], function ($router) {
-    Route::post('register', [InvestorController::class, 'register']);
-    Route::post('login', [InvestorController::class, 'login']);
-    Route::post('logout', [InvestorController::class, 'logout']);
-    Route::post('refresh', [InvestorController::class, 'refresh']);
-    Route::post('me', [InvestorController::class, 'me']);
+    Route::post('register', [InvestorsController::class, 'register']);
+    Route::post('login', [InvestorsController::class, 'login']);
+    Route::post('logout', [InvestorsController::class, 'logout']);
+    Route::post('refresh', [InvestorsController::class, 'refresh']);
+    Route::post('me', [InvestorsController::class, 'me']);
 });
 
 Route::group([

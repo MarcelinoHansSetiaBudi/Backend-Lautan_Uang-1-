@@ -8,11 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class Investor extends Authenticatable implements JWTSubject
+class Investors extends Authenticatable implements JWTSubject
 {
     use HasFactory, Notifiable;
 
-    protected $table = 'investor';
+    protected $table = 'investors';
     
     protected $guarded = [];
 
