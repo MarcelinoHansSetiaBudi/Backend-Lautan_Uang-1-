@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Location;
 
 class PostalCode extends Model
 {
@@ -15,4 +16,9 @@ class PostalCode extends Model
         'name',
         'description',
     ];
+
+    public function location()
+    {
+        return $this->hasMany(Location::class);
+    }
 }

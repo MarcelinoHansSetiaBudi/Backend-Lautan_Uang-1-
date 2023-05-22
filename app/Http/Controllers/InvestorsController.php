@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Investor;
+use App\Models\Investors    ;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
-class InvestorController extends Controller
+class InvestorsController extends Controller
 {
     public function __construct()
     {
@@ -34,11 +34,11 @@ class InvestorController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:investor',
+            'email' => 'required|string|email|max:255|unique:investors',
             'password' => 'required|string|min:8',
         ]);
 
-        $investor = new Investor([
+        $investor = new Investors([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
@@ -46,7 +46,7 @@ class InvestorController extends Controller
 
         $investor->save();
 
-        return response()->json(['message' => 'Investor registered successfully'], 201);
+        return response()->json(['message' => 'Investors registered successfully'], 201);
     }
 
     // ...
