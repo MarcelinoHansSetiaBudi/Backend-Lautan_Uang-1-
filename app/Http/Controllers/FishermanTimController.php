@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\FishermanTim;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class FishermanTimController extends Controller
 {
@@ -30,6 +31,51 @@ class FishermanTimController extends Controller
         return response()->json([
             'status' => 'success',
             'data' => $fishermanTim
+        ]);
+    }
+
+    // public function getFishermanTimByProvince(Request $request)
+    // {
+    //     $locationId = $request->input('location_id');
+    //     $data = FishermanTim::where('location_id', $locationId)->get();
+    
+    //     return response()->json([
+    //         'status' => 'success',
+    //         'data' => $data
+    //     ]); 
+    // }
+
+    public function getFishermanTimByProvince(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'location_id' => 'required|integer'
+        ]);
+
+        // Ambil location_id dari inputan
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $validator->errors(),
+            ], 400);
+        }
+
+        $locationId = $request->input('location_id');
+
+        // Query untuk mendapatkan tim nelayan berdasarkan location_id
+        $timNelayan = FishermanTim::where('location_id', $locationId)->get();
+    
+        // Mengecek apakah terdapat tim nelayan yang ditemukan
+        if ($timNelayan->isEmpty()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Tidak ada tim nelayan yang ditemukan untuk location_id ' . $locationId,
+            ]);
+        }
+    
+        return response()->json([
+            'status' => 'success',
+            'data' => $timNelayan
         ]);
     }
 

@@ -20,6 +20,7 @@ use App\Http\Controllers\CategoryOperationalCostController;
 use App\Http\Controllers\FishermanCatchDetailController;
 use App\Http\Controllers\OperationalCostDetailController;
 use App\Http\Controllers\PaymentMethodController;
+use App\Models\FishermanTim;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,6 +79,7 @@ Route::group([
     Route::get('fisherman-tim/{id}', [FishermanTimController::class, 'show']);
     Route::put('fisherman-tim/{id}', [FishermanTimController::class, 'update']);
     Route::delete('fisherman-tim/{id}', [FishermanTimController::class, 'destroy']);
+    Route::get('fisherman-tim-province',[FishermanTimController::class, 'getFishermanTimByProvince']);
 });
 
 // Location api
