@@ -48,13 +48,22 @@ class FishermanController extends Controller
         ]);
     }
 
-    public function show(Fisherman $fisherman)
+    public function show($id)
     {
+        $fisherman = Fisherman::find($id);
+        if (!$fisherman) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Data not found'
+            ], 404);
+        }
+
         return response()->json([
             'status' => 'success',
             'data' => $fisherman
         ]);
     }
+
 
     public function update(Request $request, Fisherman $fisherman)
     {
