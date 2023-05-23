@@ -14,7 +14,7 @@ class OperationalCostDetail extends Model
     protected $fillable = [
         'operational_cost_id',
         'name',
-        'price_item',
+        'price_@item',
         'quantity'
     ];
 }

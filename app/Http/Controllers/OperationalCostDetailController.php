@@ -39,7 +39,7 @@ class OperationalCostDetailController extends Controller
         $validatedData = $request->validate([
             'operational_cost_id' => 'required|integer',
             'name' => 'required',
-            'price_item' => 'required',
+            'price_@item' => 'required',
             'quantity' => 'required|integer'
         ]);
 
@@ -58,7 +58,7 @@ class OperationalCostDetailController extends Controller
         $validatedData = $request->validate([
             'operational_cost_id' => 'sometimes|required|integer',
             'name' => 'sometimes|required',
-            'price_item' => 'sometimes|required',
+            'price_@item' => 'sometimes|required',
             'quantity' => 'sometimes|required|integer'
         ]);
 

@@ -44,7 +44,7 @@ class AnimalTypeController extends Controller
         return response()->json([
             'status' => 'success',
             'data' => $animaltype
-        ], 201);
+        ]);
     }
      
 

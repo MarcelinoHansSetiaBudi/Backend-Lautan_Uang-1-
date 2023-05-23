@@ -38,6 +38,8 @@ class BankAccountController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required',
+            'account_number' => 'required',
+            'bank_id' => 'required'
         ]);
 
         $bankaccount = BankAccount::create($validatedData);
@@ -53,7 +55,9 @@ class BankAccountController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'name' => 'sometimes|required'
+            'name' => 'sometimes|required',
+            'account_number' => 'sometimes|required',
+            'bank_id' => 'sometimes|required'
         ]);
 
         $bankaccount = BankAccount::find($id);

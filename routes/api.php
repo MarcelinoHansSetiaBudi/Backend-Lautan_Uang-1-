@@ -1,6 +1,6 @@
 <?php
 
-use app\Http\Controllers\AnimalTypeController;
+use App\Http\Controllers\AnimalTypeController;
 use App\Http\Controllers\AnimalTypeDetailController;
 use App\Http\Controllers\AssetsDetailController;
 use App\Http\Controllers\OperationalCostController;
