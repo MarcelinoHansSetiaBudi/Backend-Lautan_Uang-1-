@@ -57,14 +57,15 @@ class AssetsDetailController extends Controller
     // Mengubah data
     public function update(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'fisherman_tim_id' => 'sometimes|required|integer',
-            'name' => 'sometimes|required',
-            'type_id' => 'sometimes|required|integer',
-            'quantity' => 'sometimes|required|integer',
-            'price' => 'sometimes|required',
-            'purchase_date' => 'somestimes|required|date'
-        ]);
+        $Data = $request->all();
+        // $validatedData = $request->validate([
+        //     'fisherman_tim_id' => 'sometimes|required|integer',
+        //     'name' => 'sometimes|required',
+        //     'type_id' => 'sometimes|required|integer',
+        //     'quantity' => 'sometimes|required|integer',
+        //     'price' => 'sometimes|required',
+        //     'purchase_date' => 'somestimes|required|date'
+        // ]);
 
         $assetsdetail = AssetsDetail::find($id);
         if (!$assetsdetail) {
@@ -74,7 +75,7 @@ class AssetsDetailController extends Controller
             ], 404);
         }
 
-        $assetsdetail->update($validatedData);
+        $assetsdetail->update($Data);
 
         return response()->json([
             'status' => 'success',
