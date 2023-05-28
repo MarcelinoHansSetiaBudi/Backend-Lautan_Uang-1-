@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnimalTypeController;
-use App\Http\Controllers\AnimalTypeDetailController;
+// use App\Http\Controllers\AnimalTypeDetailController;
 use App\Http\Controllers\AssetsDetailController;
 use App\Http\Controllers\OperationalCostController;
 use Illuminate\Http\Request;
@@ -109,17 +109,17 @@ Route::group([
     Route::delete('animal-type/{id}', [AnimalTypeController::class, 'destroy']);
 });
 
-Route::group([
-    'middleware' => ['api', 'jwt.auth'],
+// Route::group([
+//     'middleware' => ['api', 'jwt.auth'],
 
-], function ($router) {
-// Animal Type Detail
-    Route::get('animal-type-detail', [AnimalTypeDetailController::class, 'index']);
-    Route::post('animal-type-detail', [AnimalTypeDetailController::class, 'store']);
-    Route::get('animal-type-detail/{id}', [AnimalTypeDetailController::class, 'show']);
-    Route::put('animal-type-detail/{id}', [AnimalTypeDetailController::class, 'update']);
-    Route::delete('animal-type-detail/{id}', [AnimalTypeDetailController::class, 'destroy']);
-});
+// ], function ($router) {
+// // Animal Type Detail
+//     Route::get('animal-type-detail', [AnimalTypeDetailController::class, 'index']);
+//     Route::post('animal-type-detail', [AnimalTypeDetailController::class, 'store']);
+//     Route::get('animal-type-detail/{id}', [AnimalTypeDetailController::class, 'show']);
+//     Route::put('animal-type-detail/{id}', [AnimalTypeDetailController::class, 'update']);
+//     Route::delete('animal-type-detail/{id}', [AnimalTypeDetailController::class, 'destroy']);
+// });
 
 Route::group([
     'middleware' => ['api', 'jwt.auth'],
