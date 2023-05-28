@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnimalTypeController;
+use App\Http\Controllers\AnimalTypesController;
 // use App\Http\Controllers\AnimalTypeDetailController;
 use App\Http\Controllers\AssetsDetailController;
 use App\Http\Controllers\OperationalCostController;
@@ -107,6 +108,18 @@ Route::group([
     Route::get('animal-type/{id}', [AnimalTypeController::class, 'show']);
     Route::put('animal-type/{id}', [AnimalTypeController::class, 'update']);
     Route::delete('animal-type/{id}', [AnimalTypeController::class, 'destroy']);
+});
+
+Route::group([
+    'middleware' => ['api', 'jwt.auth'],
+
+], function ($router) {
+// Animal Type
+    Route::get('animal-types', [AnimalTypesController::class, 'index']);
+    Route::post('animal-types',[AnimalTypesController::class, 'store']);
+    Route::get('animal-types/{id}', [AnimalTypesController::class, 'show']);
+    Route::put('animal-types/{id}', [AnimalTypesController::class, 'update']);
+    Route::delete('animal-types/{id}', [AnimalTypesController::class, 'destroy']);
 });
 
 // Route::group([
