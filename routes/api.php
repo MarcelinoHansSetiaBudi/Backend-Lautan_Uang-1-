@@ -32,6 +32,9 @@ use App\Models\FishermanTim;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Methods: PUT, GET, POST, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: *");
 
 Route::group([
     'middleware' => 'api',
