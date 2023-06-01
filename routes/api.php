@@ -40,6 +40,9 @@ Route::group([
 ], function ($router) {
     Route::post('register', [AuthController::class, 'register']);
     Route::post('login', [AuthController::class, 'login']);
+    Route::get('user', [AuthController::class, 'index']);
+    Route::put('update', [AuthController::class, 'update']);
+    Route::delete('delete', [AuthController::class, 'delete']);
     Route::post('logout', [AuthController::class, 'logout']);
     Route::post('refresh', [AuthController::class, 'refresh']);
     Route::post('me', [AuthController::class, 'me']);

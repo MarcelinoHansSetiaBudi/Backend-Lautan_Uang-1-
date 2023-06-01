@@ -14,11 +14,21 @@ class AuthController extends Controller
      *
      * @return void
      */
+    
     public function __construct()
     {
         $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }
 
+    public function index()
+    {
+        $user = User::all();
+        return response()->json([
+            'status' => 'success',
+            'data' => $user
+        ]);
+    }
+    
     public function register()
     {
         $validator = Validator::make(request()->all(),[
@@ -61,6 +71,48 @@ class AuthController extends Controller
         }
 
         return $this->respondWithToken($token);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'name' => 'sometimes|required',
+            'email' => 'sometimes|required|email|unique:users',
+            'password' => 'sometimes|required'
+        ]);
+
+        $user = User::find($id);
+        if (!$user) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Data not found'
+            ], 404);
+        }
+        
+        $user = User::update($validatedData);
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $user
+        ]);
+    }
+
+    public function destroy($id)
+    {
+        $user = User::find($id);
+        if (!$user) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Data not found'
+            ], 404);
+        }
+
+        $user->delete();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Data deleted successfully'
+        ]);
     }
 
     public function checkToken() {
